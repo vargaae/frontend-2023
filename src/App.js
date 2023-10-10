@@ -1,7 +1,37 @@
+import { Component } from 'react';
+
 import logo from './logo.svg';
 import './App.css';
 
-function App() {
+
+class App extends Component {
+  constructor(){
+    super();
+
+    this.state = {
+      name: 'User',
+  }
+  }
+
+  render() {
+  return (
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>
+          Hi Dear {this.state.name}!
+        </p>
+        <button onClick={() => {
+          this.setState({
+            name: 'Developer',
+        })
+        }}>Change Name to Developer</button>
+      </header>
+    </div>
+  );
+}
+}
+/* function App() {
   return (
     <div className="App">
       <header className="App-header">
@@ -20,6 +50,6 @@ function App() {
       </header>
     </div>
   );
-}
+} */
 
 export default App;
