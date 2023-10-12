@@ -9,7 +9,8 @@ class App extends Component {
     super();
 
     this.state = {
-      name: 'User',
+      name: { nickName: 'User', lastName: 'User' },
+      company: 'Skynet'
   }
   }
 
@@ -19,13 +20,22 @@ class App extends Component {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Hi Dear {this.state.name}!
+          Hi Dear {this.state.name.nickName} from {this.state.company}!
         </p>
         <button onClick={() => {
-          this.setState({
-            name: 'Developer',
-        })
-        }}>Change Name to Developer</button>
+          this.setState(
+            (state, props) => {
+            return {
+              name: { nickName: 'Developer', lastName: 'Developer' }, 
+            };
+          }, 
+            () => {
+              console.log(this.state)
+            } 
+          );
+        }
+      }
+      >Change Name to Developer</button>
       </header>
     </div>
   );
@@ -37,16 +47,8 @@ class App extends Component {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          Hi Dear User
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
       </header>
     </div>
   );
