@@ -11,11 +11,17 @@ class App extends Component {
     this.state = {
       name: { nickName: 'User', lastName: 'User' },
       company: 'Skynet',
-      users: [{name: 'Andras', id:'213124ea'},
-       {name: 'John', id:'113124br'},
-       {name: 'Clint', id:'313124hg'}],
+      users: [],
   }
   }
+
+componentDidMount() {
+  fetch('https://jsonplaceholder.typicode.com/users')
+  .then(response => response.json())
+  .then(data => this.setState(()=> {
+    return {users: data}
+  }))
+}
 
   render() {
   return (
