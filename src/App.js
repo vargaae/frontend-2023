@@ -10,7 +10,10 @@ class App extends Component {
 
     this.state = {
       name: { nickName: 'User', lastName: 'User' },
-      company: 'Skynet'
+      company: 'Skynet',
+      skills: [{name: 'React'},
+       {name: 'Angular'},
+       {name: 'NodeJS'}],
   }
   }
 
@@ -36,6 +39,10 @@ class App extends Component {
         }
       }
       >Change Name to Developer</button>
+      <h2>Skills:</h2>
+      {this.state.skills.map((skill) => {
+        return <h3>{skill.name}</h3>
+      })}
       </header>
     </div>
   );
