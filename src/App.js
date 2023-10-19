@@ -13,17 +13,24 @@ class App extends Component {
       company: 'Skynet',
       users: [],
   }
+    console.log('1 ->constructor')
   }
 
 componentDidMount() {
+    console.log('3 ->componentDidMount')
   fetch('https://jsonplaceholder.typicode.com/users')
   .then(response => response.json())
   .then(data => this.setState(()=> {
     return {users: data}
-  }))
+  },
+  () => {
+    console.log(this.state)
+  }
+  ))
 }
 
   render() {
+    console.log('2 ->render')
   return (
     <div className="App">
       <header className="App-header">
