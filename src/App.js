@@ -43,8 +43,11 @@ class App extends Component {
   render() {
     console.log("2 ->render");
 
-    const filteredUsers = this.state.users.filter((user) => {
-      return user.name.toLocaleLowerCase().includes(this.state.searchField);
+    const { users, searchField } = this.state;
+    const { onSearchChange } = this;
+
+    const filteredUsers = users.filter((user) => {
+      return user.name.toLocaleLowerCase().includes(searchField);
     });
 
     return (
@@ -75,7 +78,7 @@ class App extends Component {
             className="search-box"
             type="search"
             placeholder="search users"
-            onChange={this.onSearchChange}
+            onChange={onSearchChange}
           />
 
           <h2>LIST:</h2>
