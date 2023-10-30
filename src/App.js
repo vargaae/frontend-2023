@@ -1,7 +1,9 @@
 import { Component } from "react";
 
-import logo from "./logo.svg";
 import "./App.css";
+import Skills from "./components/skills/skills.component";
+import SearchBox from "./components/search-box/search-box.component";
+import CardList from "./components/card-list/card-list.component";
 
 class App extends Component {
   constructor() {
@@ -53,7 +55,6 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
           <p>
             Hi Dear {this.state.name.nickName} from {this.state.company}!
           </p>
@@ -74,22 +75,15 @@ class App extends Component {
             Change Name to Developer
           </button>
           <h2>Users:</h2>
-          <input
-            className="search-box"
-            type="search"
+          <SearchBox
+            onChangeHandler={onSearchChange}
             placeholder="search users"
-            onChange={onSearchChange}
+            className="search-box"
           />
-
           <h2>LIST:</h2>
-          {filteredUsers.map((user) => {
-            return (
-              <div key={user.id}>
-                <h3>{user.name}</h3>
-              </div>
-            );
-          })}
+          <CardList users={filteredUsers} />
         </header>
+        <Skills />
       </div>
     );
   }
