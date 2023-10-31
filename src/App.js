@@ -55,8 +55,9 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
+        <img src='https://ei.marketwatch.com/Multimedia/2018/02/13/Photos/ZQ/MW-GD647_skynet_20180213113524_ZQ.jpg?uuid=e41f2218-10db-11e8-b127-9c8e992d421e' className="App-logo" alt="logo" />
           <p>
-            Hi Dear {this.state.name.nickName} from {this.state.company}!
+            Welcome Dear {this.state.name.nickName} in {this.state.company}!
           </p>
           <button
             onClick={() => {
@@ -74,13 +75,12 @@ class App extends Component {
           >
             Change Name to Developer
           </button>
-          <h2>Users:</h2>
+          <h2>Users/Developers:</h2>
           <SearchBox
             onChangeHandler={onSearchChange}
             placeholder="search users"
-            className="search-box"
+            className="users-search-box"
           />
-          <h2>LIST:</h2>
           <CardList users={filteredUsers} />
         </header>
         <Skills />

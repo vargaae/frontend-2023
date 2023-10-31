@@ -1,20 +1,20 @@
 import { Component } from "react";
 
+import Card from './card.component'
+import './card-list.styles.css'
+
 class CardList extends Component {
   render() {
     const { users } = this.props;
 
     return (
-      <div>
+      <div className="card-list">
         {users.map((user) => {
           return (
-            <div key={user.id}>
-              <h3>{user.name}</h3>
-            </div>
-          );
-        })}
+            <Card user={user} />
+        )})}
       </div>
-    );
+    )
   }
 }
 
