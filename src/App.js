@@ -56,9 +56,9 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
         <img src='https://ei.marketwatch.com/Multimedia/2018/02/13/Photos/ZQ/MW-GD647_skynet_20180213113524_ZQ.jpg?uuid=e41f2218-10db-11e8-b127-9c8e992d421e' className="App-logo" alt="logo" />
-          <p>
+          <h1 className="app-title">
             Welcome Dear {this.state.name.nickName} in {this.state.company}!
-          </p>
+          </h1>
           <button
             onClick={() => {
               this.setState(
