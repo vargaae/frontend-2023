@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 import "./App.css";
 import Skills from "./components/skills/skills.component";
 import SearchBox from "./components/search-box/search-box.component";
@@ -7,8 +9,7 @@ import CardList from "./components/card-list/card-list.component";
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
+         <p>
           Hi Dear User
         </p>
       </header>
@@ -17,16 +18,27 @@ import CardList from "./components/card-list/card-list.component";
 } */
 
 const App = () => {
+  const [searchField, setSearchField] = useState(''); // [value, setValue]
+  console.log({ searchField })
+
+  const onSearchChange = (event) => {
+        const searchFieldString = event.target.value.toLocaleLowerCase();
+        setSearchField(searchFieldString);
+      };
+
   return (
     <div className="App">
-        <header className="App-header">
         <img src='https://ei.marketwatch.com/Multimedia/2018/02/13/Photos/ZQ/MW-GD647_skynet_20180213113524_ZQ.jpg?uuid=e41f2218-10db-11e8-b127-9c8e992d421e' className="App-logo" alt="logo" />
           <h1 className="app-title">
             SKYNET
           </h1>
+          <SearchBox
+              onChangeHandler={onSearchChange}
+              placeholder="search users"
+              className="users-search-box"
+            />
           <h2>Users/Developers:</h2>
 
-        </header>
         <Skills />
       </div>
   )
