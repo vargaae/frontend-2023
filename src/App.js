@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import "./App.css";
 import Skills from "./components/skills/skills.component";
@@ -19,12 +19,23 @@ import CardList from "./components/card-list/card-list.component";
 
 const App = () => {
   const [searchField, setSearchField] = useState(''); // [value, setValue]
-  console.log({ searchField })
+  const [users, setUsers] = useState([]);
+  console.log( searchField )
+
+useEffect(() => {
+  fetch("https://jsonplaceholder.typicode.com/users")
+      .then((response) => response.json())
+      .then((data) => setUsers(data))
+}, [])
 
   const onSearchChange = (event) => {
         const searchFieldString = event.target.value.toLocaleLowerCase();
         setSearchField(searchFieldString);
       };
+
+      const filteredUsers = users.filter((user) => {
+              return user.name.toLocaleLowerCase().includes(searchField);
+            });
 
   return (
     <div className="App">
@@ -38,6 +49,7 @@ const App = () => {
               className="users-search-box"
             />
           <h2>Users/Developers:</h2>
+           <CardList users={filteredUsers} />
 
         <Skills />
       </div>
